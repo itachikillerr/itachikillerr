@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="cabezal">
+        <div>
+            <span><a href="#nuestros-programas">Quienes Somos</a></span>
+            <span><a href="">Preguntas frecuentes</a></span>
+            <span><a href="">Sugerencias y Reclamos</a></span>
+            <span><a href="">Trabaja con nosotros</a></span>
+        </div>
+        <div class="cabezal-2">
+            <span>Horario de atención: Lunes a Viernes 9:00 hrs a 18:00 hrs.</span>
+            <span>(00) 000 0000</span>
+        </div>
+    </div>
+    
+    <header>
+        <nav>
+        <div class="logo"><img src="img/logo.png" alt="logo isal"></div>
+        <ul class="menu">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#acerca">Acerca de</a></li>
+            <li><a href="#">Servicios</a>
+                <div class="vertical">
+				<ul class="menu-vertical">
+					<li><a href="#">Gestión y valorización de residuos</a></li>
+					<li><a href="#">Limpieza y desinfección</a></li>
+                    <li><a href="#">Sanitarios y equipos portátiles</a></li>
+				</ul>
+                </div>
+			</li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="menu-toggle">&#9776;</div>
+        </nav>
+    </header>
+
+<!---IMAGENES DESLIZABLE--->
+    <div class="ruleta">
+        <div class="arrow l" onclick="prev()">
+            <img src="img/l.png" alt="l">
+        </div>
+        <div class="slide slide-1">
+            <div class="caption">
+                <h3>LÍQUIDOS PELIGROSOS</h3>
+                <p>Transporte de líquidos peligrosos y no peligrosos.</p>
+            </div>
+        </div>
+        <div class="slide slide-2">
+            <div class="caption">
+                <h3>TRANSPORTE DE RESIDUOS SÓLIDOS</h3>
+                <p>Recolección y transporte de residuos sólidos.</p>
+            </div>
+    </div>
+    <div class="slide slide-3">
+            <div class="caption">
+                <h3>BAÑOS PORTATILES</h3>
+                <p>Alquiler y venta de baños portátiles.</p>
+            </div>
+    </div>
+    <div class="arrow r" onclick="next()">
+            <img src="img/r.png" alt="r">
+        </div>
+    </div>
+
+<!----------------------------------------------------------------------------> 
+<section id="nuestros-programas">
+    <div class="container">
+        <div class="sub-titulo">
+            <p>Conoce lo que nos identifica</p>
+            <h2>Seguimos manteniendo nuestra esencia</h2>
+        </div>
+        <div class="programas">
+            <div class="carta">
+                <img src="icon/mision.png" alt="mision">
+                <h3>Misión</h3>
+                <p>Contribuir para que las empresas y la</p>
+                <p>sociedad sean sostenibles, preservando el</p>
+                <p>mundo para las futuras generaciones.</p>
+            </div>
+            <div class="carta">
+                <img src="icon/vision.png" alt="vision">
+                <h3>Vision</h3>
+                <p>Contribuir para que las empresas y la</p>
+                <p>sociedad sean sostenibles, preservando el</p>
+                <p>mundo para las futuras generaciones.</p>
+            </div>
+            <div class="carta">
+                <img src="icon/valor.png" alt="valores">
+                <h3>Valores</h3>
+                <p>Contribuir para que las empresas y la</p>
+                <p>sociedad sean sostenibles, preservando el</p>
+                <p>mundo para las futuras generaciones.</p>
+            </div> 
+        </div>
+        <div class="sub-titulo-2">
+            <p>Empresa con servicio a nivel nacional</p>
+            <h2>ISAL SERVIS SAC</h2>
+        </div>
+        <div class="carta-distinta">
+            <p>ISAL SERVIS SAC es un empresa con servicio a nivel</p>
+            <p>nacional, Sus actividades son: alquiler y venta de baños</p>
+            <p>portátiles, recolección y transporte de residuos sólidos y</p>
+            <p>líquidos peligrosos y no peligrosos, donde es de vital</p>
+            <img src="icon/industrial.png" alt="valores">
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy;Copyright 2023 ©ISAL SERVIS SAC Todos los derechos reservados.</p>
+    </div>
+</footer>
+<!----------------------------------------------------------------------------> 
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+document.querySelector('.menu').classList.toggle('responsive');
+});
+</script>
+
+<!--    Menu deslizable     -->
+<script type="text/javascript">
+		window.addEventListener("scroll", function(){
+			var header = document.querySelector("header");
+			header.classList.toggle("abajo",window.scrollY>0);
+		})
+        window.addEventListener("scroll", function(){
+			var header = document.querySelector(".menu-toggle");
+			header.classList.toggle(".menu-toggle",window.scrollY>0);
+		})
+</script>
+
+<!--Efecto imagenes con slider-->
+<script>
+    let slide = document.querySelectorAll('.slide');
+    var current = 0;
+
+    function cls(){
+        for(let i = 0; i < slide.length; i++){
+            slide[i].style.display = 'none';
+        }
+    }
+
+    function next(){
+        cls();
+        if(current === slide.length-1) current = -1;
+        current++;
+
+        slide[current].style.display = 'block';
+        slide[current].style.opacity = 0.4;
+
+        var x = 0.4;
+        var intX = setInterval(function(){
+            x+=0.1;
+            slide[current].style.opacity = x;
+            if(x >= 1) {
+                clearInterval(intX);
+                x = 0.4;
+            }
+        }, 100);
+    }
+
+    function prev(){
+        cls();
+        if(current === 0) current = slide.length;
+        current--;
+
+        slide[current].style.display = 'block';
+        slide[current].style.opacity = 0.4;
+
+        var x = 0.4;
+        var intX = setInterval(function(){
+            x+=0.1;
+            slide[current].style.opacity = x;
+            if(x >= 1) {
+                clearInterval(intX);
+                x = 0.4;
+            }
+        }, 100);
+
+    }
+
+    function start(){
+        cls();
+        slide[current].style.display = 'block';
+    }
+    start();
+</script>
+</body>
+</html>
